@@ -1,8 +1,18 @@
 import React from 'react'
+import Header from './components/Header'
+import Center from './components/Center'
 
 function App() {
   return (
-    <div>hello world</div>
+    <div>
+
+    {/* HEADER SECTION */}
+      <Header/>
+
+
+      {/* CENTER SECTION */}
+      <Center/>
+    </div>
   )
 }
 
