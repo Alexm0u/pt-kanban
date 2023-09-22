@@ -3,6 +3,7 @@ import logo from '../assets/logo-mobile.svg'
 import iconDown from '../assets/icon-chevron-down.svg'
 import iconUp from '../assets/icon-chevron-up.svg'
 import elipsis from '../assets/icon-vertical-ellipsis.svg'
+import HeaderDropdown from './HeaderDropdown'
 
 function Header() {
 
@@ -46,6 +47,8 @@ function Header() {
 
             </div>
         </header>
+
+        {openDropdown && <HeaderDropdown setOpenDropdown={setOpenDropdown}/>}
 
     </div>
   )
