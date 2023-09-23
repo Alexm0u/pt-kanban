@@ -37,7 +37,7 @@ const validate = () => {
     return false
   }
 
-  for (let i = 0; i < name.length; i++) {
+  for (let i = 0; i < newColumns.length; i++) {
     if (!newColumns[i].name.trim()){
       return false
     }
