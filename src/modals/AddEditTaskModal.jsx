@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import crossIcon from '../assets/icon-cross.svg'
 
 function AddEditTaskModal({type, device, setOpenAddEditTask}) {
 
@@ -13,6 +14,19 @@ function AddEditTaskModal({type, device, setOpenAddEditTask}) {
             
         ]
     )
+
+    const onChange = (id, newValue) => {
+        setSubtasks((pervState) => {
+          const newState = [...pervState]
+          const subtask = newState.find((subtask)=> subtask.id === id)
+          subtask.name = newValue
+          return newState
+        })
+      }
+
+    const onDelete = (id) => {
+        setSubtasks((perState)=> perState.filter((el)=> el.id !== id))
+      }
 
 
   return (
@@ -41,7 +55,7 @@ function AddEditTaskModal({type, device, setOpenAddEditTask}) {
                 className='bg-transparent px-4 py-2 outline-none focus:border-0 rounded-md text-sm 
                 border border-grey-600 focus:outline-[#635fc7] ring-0'
                 type="text"
-                placeholder='ej Revisar mail'/>
+                placeholder='Ej. Revisar mail'/>
             </div>
             {/* SUBTAREAS  */}
             <div className="mt-8 flex flex-col space-y-1">
@@ -56,13 +70,31 @@ function AddEditTaskModal({type, device, setOpenAddEditTask}) {
                     className='flex items-center w-full'
                     >
                         <input 
+                        onChange={(e)=>{
+                            onChange(subtask.id, e.target.value)
+                        }}
                         type='text'
                         value={subtask.title}
                         className='bg-transparent outline-none focus:border-0 border flex-grow 
-                        px-4 py-2 rounded-md text-sm border-grey-600 focus:outline-[#635fc7]' 
+                        px-4 py-2 rounded-md text-sm border-grey-600 focus:outline-[#635fc7]'
+                        placeholder='Ej. Responder mails pendientes'
                         />
+                        <img 
+                        onClick={() => {
+                            onDelete(subtask.id)
+                        }}
+                        src={crossIcon} className='m-4 cursor-pointer'/>
                     </div>
                     ))}
+                    <button 
+                    onClick={()=> {
+                        setSubtasks((state)=> [...state,{title: '' , isCompleted : false , id: uuidv4()},
+                    ])
+                    }}
+                    className='w-full items-center
+                    dark:text-[#635fc7] dark:bg-white text-white bg-[#635fc7] py-2 rounded-full'>
+                        Añadir subtarea
+                    </button>
             </div>
 
             {/* NOTAS  */}
@@ -71,7 +103,7 @@ function AddEditTaskModal({type, device, setOpenAddEditTask}) {
                 <textarea value={description} onChange={(e)=> setDescription(e.target.value)}
                 className='bg-transparent px-4 py-2 outline-none focus:border-0 min-h-[200px] rounded-md text-sm 
                 border border-grey-600 focus:outline-[#635fc7] ring-0'
-                placeholder='ej Comprobar si se ha recibido algún correo nuevo'/>
+                placeholder='Ej. Comprobar si se ha recibido algún correo nuevo'/>
             </div>
             
         </div>

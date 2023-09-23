@@ -69,7 +69,7 @@ function HeaderDropdown({setOpenDropdown, setBoardModalOpen}) {
                 }}>
                     <img src={boardIcon} className='h-4'/>
                     <p className='text-lg font-bold'>
-                      Crear nuevo tablero
+                      Crear nuevo
                     </p>
                 </div>
                 <div className='mx-2 p-4 space-x-2 bg-slate-100 dark:bg-[#20212c] flex justify-center items-center rounded-lg'>
