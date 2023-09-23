@@ -1,11 +1,21 @@
 import React, { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4, validate } from 'uuid'
 import crossIcon from '../assets/icon-cross.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import boardsSlice from '../redux/boardsSlice'
 
-function AddEditTaskModal({type, device, setOpenAddEditTask}) {
+function AddEditTaskModal({type, device, setOpenAddEditTask, pervColIndex = 0, }) {
 
+    const dispatch = useDispatch()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [isValid, setIsValid] = useState(true)
+
+    const board = useSelector((state)=> state.boards).find((board)=>board.isActive)
+    const columns = board.columns
+    const col = columns.find((col, index)=> index === pervColIndex)
+    const [status, setStatus] = useState(columns [pervColIndex].name)
+    const [newColIndex, setNewColIndex] = useState(pervColIndex)
 
     const [subtasks, setSubtasks] = useState(
         [
@@ -24,8 +34,39 @@ function AddEditTaskModal({type, device, setOpenAddEditTask}) {
         })
       }
 
+    const onChangeStatus = (e) => {
+        setStatus(e.target.value)
+        setNewColIndex(e.target.selectedIndex)
+    }
+
     const onDelete = (id) => {
         setSubtasks((perState)=> perState.filter((el)=> el.id !== id))
+      }
+
+      const validate = () => {
+        setIsValid(false)
+        if (!title.trim()) {
+          return false
+        }
+      
+        for (let i = 0; i < subtasks.length; i++) {
+          if (!subtasks[i].name.trim()){
+            return false
+          }
+        }
+        setIsValid(true)
+        return true
+      }
+
+      const onSubmit = (type) => {
+        if (type === 'add') {
+            dispatch(boardsSlice.actions.addTask({
+                title,
+                description,
+                subtasks,
+                status,
+            }))
+        }
       }
 
 
@@ -97,6 +138,36 @@ function AddEditTaskModal({type, device, setOpenAddEditTask}) {
                     </button>
             </div>
 
+            {/* ESTADO ACTUAL  */}
+            <div className="mt-8 flex flex-col space-y-3">
+                <label className="text-sm dark:text-white text-grey-500">
+                    Estado
+                </label>
+                <select 
+                value={status}
+                onChange={(e)=>onChangeStatus(e)}
+                className='select-status flex flex-grow px-4 py-2 rounded-md text-sm 
+                bg-transparent focus:border-0 border border-grey-300 
+                focus:outline-[#635fc7] outline-none'>
+                    {columns.map((column, index)=>(
+                        <option value={column.name}
+                        key={index}
+                        >
+                            {column.name}
+                        </option>
+                    ))}
+                </select>
+                <button 
+                onClick={()=> {
+                    const isValid = validate()
+                    if (isValid) {
+                        onSubmit(type)
+                    }
+                }}
+                className="w-full items-center text-white bg-[635fc7] py-2 rounded-full">
+                    {type === 'edit'? 'Guardar cambios': 'Crear Tarea'}
+                </button>
+            </div>
             {/* NOTAS  */}
             <div className="mt-8 flex flex-col space-y-1">
                 <label className="text-sm dark:text-white text-grey-500">Notas</label>
