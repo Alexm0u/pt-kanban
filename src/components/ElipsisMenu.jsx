@@ -12,7 +12,9 @@ function ElipsisMenu({type, setOpenEditModal, setOpenDeleteModal}) {
                 }}>
                     Editar {type}
                 </p>
-                <p className="cursor-pointer text-red-500">
+                <p className="cursor-pointer text-red-500" onClick={()=> {
+                    setOpenDeleteModal()
+                }}>
                     Eliminar {type}
                 </p>
             </div>

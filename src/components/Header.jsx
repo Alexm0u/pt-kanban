@@ -8,6 +8,7 @@ import AddEditBoardModal from '../modals/addEditBoardModal'
 import { useDispatch, useSelector } from 'react-redux'
 import AddEditTaskModal from '../modals/AddEditTaskModal'
 import ElipsisMenu from './ElipsisMenu'
+import DeleteModal from '../modals/DeleteModal'
 
 
 function Header({setBoardModalOpen, boardModalOpen}) {
@@ -77,7 +78,7 @@ function Header({setBoardModalOpen, boardModalOpen}) {
               }} alt="elipsis" className='cursor-pointer h-6'/>
 
               {isElipsisOpen && <ElipsisMenu 
-              setOpenDeleteModal={setIsDeleteModalOpen}
+              setOpenDeleteModal={setOpenDeleteModal}
               setOpenEditModal={setOpenEditModal} 
               type='Tablero'/>}
 
@@ -91,6 +92,8 @@ function Header({setBoardModalOpen, boardModalOpen}) {
         {boardModalOpen && <AddEditBoardModal type={boadType} setBoardModalOpen={setBoardModalOpen}/>}
 
         {openAddEditTask && <AddEditTaskModal setOpenAddEditTask={setOpenAddEditTask} device='mobile' type='add'/>}
+
+        {isDeleteModalOpen && <DeleteModal type='tablero' />}
 
     </div>
   )
