@@ -69,12 +69,11 @@ function Header({setBoardModalOpen, boardModalOpen}) {
 
             {/* RIGHT SIDE  */}
 
-            <div className="flex space-x-4 items-center md:space-x-6">
+            <div onClick={()=> {
+                setOpenAddEditTask(state => !state)}}  className="flex space-x-4 items-center md:space-x-6">
               <button className='hidden md:block button'>
                 + Añadir tarea
               </button>
-
-              
 
               <button onClick={()=> {
                 setOpenAddEditTask(state => !state)}} 
