@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import AddEditTaskModal from '../modals/AddEditTaskModal'
 import ElipsisMenu from './ElipsisMenu'
 import DeleteModal from '../modals/DeleteModal'
+import boardsSlice from '../redux/boardsSlice'
 
 
 function Header({setBoardModalOpen, boardModalOpen}) {
@@ -30,6 +31,11 @@ function Header({setBoardModalOpen, boardModalOpen}) {
   const setOpenDeleteModal = () => {
     setIsDeleteModalOpen(true)
     setIsElipsisOpen(false)
+  }
+  const onDeleteBtnClick = ()=> {
+    dispatch(boardsSlice.actions.deleteBoard())
+    dispatch(boardsSlice.actions.setBoardActive({index:0}))
+    setIsDeleteModalOpen(false)
   }
   
 
@@ -93,7 +99,7 @@ function Header({setBoardModalOpen, boardModalOpen}) {
 
         {openAddEditTask && <AddEditTaskModal setOpenAddEditTask={setOpenAddEditTask} device='mobile' type='add'/>}
 
-        {isDeleteModalOpen && <DeleteModal setIsDeleteModalOpen = {setIsDeleteModalOpen} title={board.name} type='tablero' />}
+        {isDeleteModalOpen && <DeleteModal setIsDeleteModalOpen = {setIsDeleteModalOpen} onDeleteBtnClick={onDeleteBtnClick} title={board.name} type='tablero' />}
 
     </div>
   )
