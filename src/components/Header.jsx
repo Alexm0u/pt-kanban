@@ -7,17 +7,29 @@ import HeaderDropdown from './HeaderDropdown'
 import AddEditBoardModal from '../modals/addEditBoardModal'
 import { useDispatch, useSelector } from 'react-redux'
 import AddEditTaskModal from '../modals/AddEditTaskModal'
+import ElipsisMenu from './ElipsisMenu'
+
 
 function Header({setBoardModalOpen, boardModalOpen}) {
 
   const dispatch = useDispatch()
 
   const [openDropdown, setOpenDropdown] = useState(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [openAddEditTask, setOpenAddEditTask] = useState(false)
+  const [isElipsisOpen, setIsElipsisOpen] = useState(false)
   const [boadType , setBoadType] = useState('add')
 
   const boards = useSelector((state) => state.boards)
   const board = boards.find(board => board.isActive)
+  const setOpenEditModal = () => {
+    setBoardModalOpen(true)
+    setIsElipsisOpen(false)
+  }
+  const setOpenDeleteModal = () => {
+    setIsDeleteModalOpen(true)
+    setIsElipsisOpen(false)
+  }
   
 
 
@@ -57,7 +69,17 @@ function Header({setBoardModalOpen, boardModalOpen}) {
                 +
               </button>
 
-              <img src={elipsis} alt="elipsis" className='cursor-pointer h-6'/>
+              <img src={elipsis} 
+              onClick={()=> {
+                setBoadType('edit')
+                setOpenDropdown(false)
+                setIsElipsisOpen(state=> !state)
+              }} alt="elipsis" className='cursor-pointer h-6'/>
+
+              {isElipsisOpen && <ElipsisMenu 
+              setOpenDeleteModal={setIsDeleteModalOpen}
+              setOpenEditModal={setOpenEditModal} 
+              type='Tablero'/>}
 
 
             </div>
