@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import elipsis from "../assets/icon-vertical-ellipsis.svg"
+import ElipsisMenu from '../components/ElipsisMenu'
 
 
 function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
