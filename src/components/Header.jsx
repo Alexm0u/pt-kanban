@@ -93,7 +93,7 @@ function Header({setBoardModalOpen, boardModalOpen}) {
 
         {openAddEditTask && <AddEditTaskModal setOpenAddEditTask={setOpenAddEditTask} device='mobile' type='add'/>}
 
-        {isDeleteModalOpen && <DeleteModal type='tablero' />}
+        {isDeleteModalOpen && <DeleteModal setIsDeleteModalOpen = {setIsDeleteModalOpen} title={board.name} type='tablero' />}
 
     </div>
   )
