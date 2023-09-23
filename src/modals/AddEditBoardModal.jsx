@@ -92,7 +92,7 @@ function AddEditBoardModal({ setBoardModalOpen, type }) {
         {/* NOMBRE TAREA */}
         <div className="mt-8 flex flex-col space-y-3">
           <label className="text-sm dark:text-white text-grey-500">
-            Board Columns
+            Nombre del tablero
           </label>
 
           <input
@@ -109,7 +109,7 @@ function AddEditBoardModal({ setBoardModalOpen, type }) {
         {/* BOARD COLUMNS  */}
         <div className="mt-8 flex flex-col space-y-3">
           <label className="text-sm dark:text-white text-grey-500">
-            Board Columns
+            Estado de las tareas
           </label>
           {newColumns.map((column, index) => (
             <div key={column.id} className="flex items-center w-full">

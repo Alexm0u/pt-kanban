@@ -1,11 +1,11 @@
 {
   "boards": [
     {
-      "name": "Platform Launch",
+      "name": "FrontEnd",
       "isActive" : false,
       "columns": [
         {
-          "name": "Todo",
+          "name": "Por hacer",
           "tasks": [
             {
               "title": "Build UI for onboarding flow",
@@ -70,7 +70,7 @@
           ]
         },
         {
-          "name": "Doing",
+          "name": "En proceso",
           "tasks": [
             {
               "title": "Design settings and search pages",
@@ -181,7 +181,7 @@
           ]
         },
         {
-          "name": "Done",
+          "name": "Finalizada",
           "tasks": [
             {
               "title": "Conduct 5 wireframe tests",
@@ -285,7 +285,7 @@
       ]
     },
     {
-      "name": "Marketing Plan",
+      "name": "BackEnd",
       "isActive" : false,
       "columns": [
         {
@@ -377,7 +377,7 @@
       ]
     },
     {
-      "name": "Roadmap",
+      "name": "Marketing",
       "isActive" : false,
       "columns": [
         {
