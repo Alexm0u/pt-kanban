@@ -89,12 +89,18 @@ const onDelete = (id) => {
 
        <div>
         <button className='w-full items-center hover:opacity-75
-         dark:text-[#635fc7] dark:bg-white text-white bg-[#635fc7] py-2 rounded-full'
+         dark:text-[#635fc7] dark:bg-white text-white bg-[#635fc7] mt-2 py-2 rounded-full'
          onClick={()=> {
           setNewColumns((state)=>[...state,{name: '', task: [], id: uuidv4()}])
          }}
          >
-          Add new column
+          Añadir columna
+        </button>
+
+        <button className='w-full items-center hover:opacity-75
+         dark:text-white dark:bg-[#635fc7] mt-8 relative text-white bg-[#635fc7] py-2 rounded-full'
+         >
+          {type === 'add'? 'Crear nuevo tablero': 'Guardar cambios'}
         </button>
        </div>
       </div>
