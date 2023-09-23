@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {v4 as uuidv4} from 'uuid'
+import crossIcon from "../assets/icon-cross.svg"
 
 function AddEditBoardModal({setBoardModalOpen , type, }) {
 
@@ -19,6 +20,10 @@ const onChange = (id, newValue) => {
     column.name = newValue
     return newState
   })
+}
+
+const onDelete = (id) => {
+  setNewColumns((perState)=> perState.filter((el)=> el.id !== id))
 }
 
 
@@ -70,6 +75,12 @@ const onChange = (id, newValue) => {
             }}
             value={column.name}
             type='text' 
+            />
+            <img src={crossIcon}
+            className='cursor-pointer m-4'
+            onClick={() => {
+              onDelete(column.id)
+            }}
             />
           </div>
         ))
