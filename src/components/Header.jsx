@@ -37,6 +37,12 @@ function Header({setBoardModalOpen, boardModalOpen}) {
     dispatch(boardsSlice.actions.setBoardActive({index:0}))
     setIsDeleteModalOpen(false)
   }
+  const onDropdownClick = () => {
+    setOpenDropdown(state => !state)
+    setIsElipsisOpen(false)
+    setBoadType('add')
+
+  }
   
 
 
@@ -57,7 +63,7 @@ function Header({setBoardModalOpen, boardModalOpen}) {
                   </h3>
                   <img src={openDropdown ? iconUp : iconDown} alt="dropdown icon" className='w-3 ml-2 
                   cursor-pointer md:hidden'
-                  onClick={() => setOpenDropdown(state => !state)}/>
+                  onClick={onDropdownClick}/>
                 </div>
             </div>
 
