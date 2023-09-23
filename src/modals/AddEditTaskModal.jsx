@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 function AddEditTaskModal({type, device, setOpenAddEditTask}) {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
 
-
+    const [subtasks, setSubtasks] = useState(
+        [
+            { title: '' , isCompleted : false , id: uuidv4() },
+            { title: '' , isCompleted : false , id: uuidv4() },
+            
+        ]
+    )
 
 
   return (
@@ -36,17 +43,42 @@ function AddEditTaskModal({type, device, setOpenAddEditTask}) {
                 type="text"
                 placeholder='ej Revisar mail'/>
             </div>
-
-            {/* DESCRIPCIÓN  */}
+            {/* SUBTAREAS  */}
             <div className="mt-8 flex flex-col space-y-1">
-                <label className="text-sm dark:text-white text-grey-500">Descripción</label>
+                <label className="text-sm dark:text-white text-grey-500">
+                    Subtareas
+                </label>
+                
+                {
+                subtasks.map((subtask, index)=> (
+                    <div 
+                    key={index}
+                    className='flex items-center w-full'
+                    >
+                        <input 
+                        type='text'
+                        value={subtask.title}
+                        className='bg-transparent outline-none focus:border-0 border flex-grow 
+                        px-4 py-2 rounded-md text-sm border-grey-600 focus:outline-[#635fc7]' 
+                        />
+                    </div>
+                    ))}
+            </div>
+
+            {/* NOTAS  */}
+            <div className="mt-8 flex flex-col space-y-1">
+                <label className="text-sm dark:text-white text-grey-500">Notas</label>
                 <textarea value={description} onChange={(e)=> setDescription(e.target.value)}
                 className='bg-transparent px-4 py-2 outline-none focus:border-0 min-h-[200px] rounded-md text-sm 
                 border border-grey-600 focus:outline-[#635fc7] ring-0'
                 placeholder='ej Comprobar si se ha recibido algún correo nuevo'/>
             </div>
+            
         </div>
-
+            
+    
+    
+    
     </div>
   )
 }
