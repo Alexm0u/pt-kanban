@@ -86,6 +86,17 @@ const onDelete = (id) => {
         ))
         }
        </div>
+
+       <div>
+        <button className='w-full items-center hover:opacity-75
+         dark:text-[#635fc7] dark:bg-white text-white bg-[#635fc7] py-2 rounded-full'
+         onClick={()=> {
+          setNewColumns((state)=>[...state,{name: '', task: [], id: uuidv4()}])
+         }}
+         >
+          Add new column
+        </button>
+       </div>
       </div>
 
     </div>
