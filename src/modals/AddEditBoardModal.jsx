@@ -73,7 +73,7 @@ const onSubmit = (type) => {
           {type === 'edit'? 'Edit': 'Add New'} Board
         </h3>
 
-       {/* TASK NAME */}
+       {/* NOMBRE TAREA */}
        <div className='mt-8 flex flex-col space-y-3'>
 
           <label className='text-sm dark:text-white text-grey-500'>

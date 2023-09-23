@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 function AddEditTaskModal({type, device, setOpenAddEditTask}) {
 
     const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
 
 
 
@@ -38,12 +39,11 @@ function AddEditTaskModal({type, device, setOpenAddEditTask}) {
 
             {/* DESCRIPCIÓN  */}
             <div className="mt-8 flex flex-col space-y-1">
-                <label className="text-sm dark:text-white text-grey-500">Nombre de la tarea</label>
-                <input value={title} onChange={(e)=> setTitle(e.target.value)}
+                <label className="text-sm dark:text-white text-grey-500">Descripción</label>
+                <textarea value={description} onChange={(e)=> setDescription(e.target.value)}
                 className='bg-transparent px-4 py-2 outline-none focus:border-0 min-h-[200px] rounded-md text-sm 
                 border border-grey-600 focus:outline-[#635fc7] ring-0'
-                type="text"
-                placeholder='Comprobar si se ha recibido algún correo nuevo'/>
+                placeholder='ej Comprobar si se ha recibido algún correo nuevo'/>
             </div>
         </div>
 
