@@ -4,7 +4,7 @@ import crossIcon from '../assets/icon-cross.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import boardsSlice from '../redux/boardsSlice'
 
-function AddEditTaskModal({type, device, setOpenAddEditTask, pervColIndex = 0, }) {
+function AddEditTaskModal({type, device, setOpenAddEditTask, taskIndex, pervColIndex = 0, }) {
 
     const dispatch = useDispatch()
     const [title, setTitle] = useState('')
@@ -29,7 +29,7 @@ function AddEditTaskModal({type, device, setOpenAddEditTask, pervColIndex = 0, }
         setSubtasks((pervState) => {
           const newState = [...pervState]
           const subtask = newState.find((subtask)=> subtask.id === id)
-          subtask.name = newValue
+          subtask.title = newValue
           return newState
         })
       }
@@ -65,7 +65,20 @@ function AddEditTaskModal({type, device, setOpenAddEditTask, pervColIndex = 0, }
                 description,
                 subtasks,
                 status,
+                newColIndex
             }))
+        }else {
+            dispatch(
+                boardsSlice.actions.editTask({
+                    title,
+                    description,
+                    subtasks,
+                    status,
+                    taskIndex,
+                    pervColIndex,
+                    newColIndex
+                })
+            )
         }
       }
 
