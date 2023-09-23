@@ -31,7 +31,7 @@ function App() {
       <EmptyBoard type='add'/>
       </>
       }
-      <Center/>
+      <Center boardModalOpen = {boardModalOpen} setBoardModalOpen = {setBoardModalOpen}/>
       </>
     </div>
   )
