@@ -27,6 +27,10 @@ useEffect(()=> {
     setColor(shuffle(colors).pop())
 }, [dispatch])
 
+const handleOnDragOver = (e) => {
+  
+}
+
 
   return (
     <div className='scrollbar-hide mx-5 pt-[90px] min-w-[280px]'>
@@ -35,7 +39,7 @@ useEffect(()=> {
             {col.name} ({col.tasks.length})
         </p>
         {col.tasks.map((task, index)=>(
-          <Task Key = {index} taskIndex = {index} colIndex = {colIndex}/>
+          <Task key = {index} taskIndex = {index} colIndex = {colIndex}/>
         ))}
     </div>
   )
