@@ -32,6 +32,10 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
   const setOpenDeleteModal = () => {
 
   }
+  const onChange = (e) => {
+    setStatus(e.target.value);
+    setNewColIndex(e.target.selectedIndex);
+  };
 
   return (
     <div
@@ -76,6 +80,25 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
             );
           })}
         </div>
+         {/* ESTADO ACTUAL SECCION */}
+        <div className="mt-8 flex flex-col space-y-3">
+          <label className="  text-sm dark:text-white text-gray-500">
+            Estado actual
+          </label>
+          <select
+            className=" select-status flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0  border-[1px] border-gray-300 focus:outline-[#635fc7] outline-none"
+            value={status}
+            onChange={onChange}
+          >
+            {columns.map((column, index) => (
+              <option className="status-options">
+                {column.name}
+              </option>
+            ))}
+          </select>
+        </div>
+       
+        
       </div>
     </div>
   ); 

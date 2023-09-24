@@ -19,11 +19,11 @@ function Subtask({ index, colIndex, taskIndex }) {
         type="checkbox"
         checked={checked}
         onChange={() =>
-          dispatch(boardsSlice).actions.setSubtaskCompleted({
+          dispatch(boardsSlice.actions.setSubtaskCompleted({
             index,
             taskIndex,
             colIndex,
-          })
+          }))
         }
       />
       <p className={checked && " line-through opacity-30 "}>{subtask.title}</p>
