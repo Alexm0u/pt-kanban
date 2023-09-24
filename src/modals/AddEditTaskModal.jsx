@@ -4,7 +4,7 @@ import crossIcon from '../assets/icon-cross.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import boardsSlice from '../redux/boardsSlice'
 
-function AddEditTaskModal({type, device, setOpenAddEditTask, setIsTaskModalOpen , taskIndex, pervColIndex = 0, }) {
+function AddEditTaskModal({type, device, setOpenAddEditTask, setIsTaskModalOpen , taskIndex, prevColIndex = 0, }) {
 
     const dispatch = useDispatch()
     const [title, setTitle] = useState('')
@@ -13,9 +13,9 @@ function AddEditTaskModal({type, device, setOpenAddEditTask, setIsTaskModalOpen 
 
     const board = useSelector((state)=> state.boards).find((board)=>board.isActive)
     const columns = board.columns
-    const col = columns.find((col, index)=> index === pervColIndex)
-    const [status, setStatus] = useState(columns [pervColIndex].name)
-    const [newColIndex, setNewColIndex] = useState(pervColIndex)
+    const col = columns.find((col, index)=> index === prevColIndex)
+    const [status, setStatus] = useState(columns [prevColIndex].name)
+    const [newColIndex, setNewColIndex] = useState(prevColIndex)
 
     const [subtasks, setSubtasks] = useState(
         [
@@ -60,27 +60,28 @@ function AddEditTaskModal({type, device, setOpenAddEditTask, setIsTaskModalOpen 
 
       const onSubmit = (type) => {
         if (type === 'add') {
-            dispatch(boardsSlice.actions.addTask({
-                title,
-                description,
-                subtasks,
-                status,
-                newColIndex
-            }))
-        }else {
-            dispatch(
-                boardsSlice.actions.editTask({
-                    title,
-                    description,
-                    subtasks,
-                    status,
-                    taskIndex,
-                    pervColIndex,
-                    newColIndex
-                })
-            )
+          dispatch(boardsSlice.actions.addTask({
+            title,
+            description,
+            subtasks,
+            status,
+            newColIndex
+          }));
+        } else if (type === 'edit') {
+          dispatch(
+            boardsSlice.actions.editTask({
+              title,
+              description,
+              subtasks,
+              status,
+              taskIndex,
+              prevColIndex,
+              newColIndex
+            })
+          );
         }
       }
+      
 
 
   return (
