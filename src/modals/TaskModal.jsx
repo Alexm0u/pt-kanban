@@ -12,7 +12,7 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
   const col = columns.find((col, i) => i === colIndex);
   const task = col.tasks.find((task, i) => i === taskIndex);
   const subtasks = task.subtasks;
-  const [elipsisMenuOpen, setElipsisMenuOpen] = useState(false);
+ 
 
   let completed = 0;
   subtasks.forEach((subtask) => {
@@ -23,6 +23,14 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
 
   const [status, setStatus] = useState(task.status);
   const [newColIndex, setNewColIndex] = useState(columns.indexOf(col));
+  const [elipsisMenuOpen, setElipsisMenuOpen] = useState(false)
+  const setOpenEditModal = () => {
+
+  }
+
+  const setOpenDeleteModal = () => {
+
+  }
 
   return (
     <div
@@ -35,17 +43,21 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
           <h1 className="text-lg">{task.title}</h1>
           <img
             onClick={() => {
-              setElipsisMenuOpen(true);
+              setElipsisMenuOpen(state => !state);
             }}
             src={elipsis}
             alt="elipsis"
             className=" cursor-pointer h-6"
           />
-          {elipsisMenuOpen && <ElipsisMenu/>}
+          {elipsisMenuOpen && <ElipsisMenu
+            setOpenEditModal={setOpenEditModal}
+            setOpenDeleteModal={setOpenDeleteModal}
+            type = 'tarea'
+          />}
         </div>
       </div>
     </div>
-  );
+  ); 
 }
 
 export default TaskModal;
