@@ -49,7 +49,7 @@ const handleOnDragOver = (e) => {
     onDrop={handleOnDrop}
       onDragOver={handleOnDragOver}
     className='scrollbar-hide mx-5 pt-[90px] min-w-[280px]'>
-        <p className='font-semibold flex items-center gap-2 tracking-widest md:tracking-[.2em] text-[#828fa3]'>
+        <p className='font-bold text-xl flex items-center gap-2 tracking-widest md:tracking-[.2em] text-[#000000] dark:text-white'>
             <div className={`rounded-full w-4 h-4 ${color}`}/>
             {col.name} ({col.tasks.length})
         </p>

@@ -52,13 +52,13 @@ function Header({setBoardModalOpen, boardModalOpen}) {
         <header className='flex justify-between dark:text-white items-center'>
             {/* LEFT SIDE */}
 
-            <div className='flex items-center space-x-2 md:space-x-4'>
+            <div className='flex items-center space-x-2 md:space-x-4 '>
                 <img src={logo} alt="logo" className='h-6 w-6'/>
-                <h3 className='hidden md:inline-block font-bold font-sans md:text-4xl'>
+                <h3 className='hidden md:inline-block font-bold font-sans md:text-4xl text-[#1a6b4782] dark:text-white'>
                   Gestor de Tareas
                 </h3>
-                <div className='flex items-center'>
-                  <h3 className='truncate max-w-[200px] md:text-2xl text-xl font-bold md:ml-20 font-sans'>
+                <div className='flex items-center '>
+                  <h3 className='truncate max-w-[200px] md:text-2xl text-xl font-bold md:ml-20 font-sans text-[#0f766e]  dark:text-white'>
                     {board.name}
                   </h3>
                   <img src={openDropdown ? iconUp : iconDown} alt="dropdown icon" className='w-3 ml-2 
@@ -70,14 +70,14 @@ function Header({setBoardModalOpen, boardModalOpen}) {
             {/* RIGHT SIDE  */}
 
             <div onClick={()=> {
-                setOpenAddEditTask(state => !state)}}  className="flex space-x-4 items-center md:space-x-6">
-              <button className='hidden md:block button'>
+                setOpenAddEditTask(state => !state)}}  className="flex space-x-4 items-center md:space-x-6 ">
+              <button className='hidden md:block button bg-[#1a6b4782] dark:bg-[#0f766e] text-[#0f766e] font-bold  dark:text-white'>
                 + Añadir tarea
               </button>
 
               <button onClick={()=> {
                 setOpenAddEditTask(state => !state)}} 
-                className='button py-1 px-3 md:hidden'>
+                className='button py-1 px-3 md:hidden bg-[#1a6b4782]  text-[#0f766e] dark:bg-[#0f766e]  dark:text-white'>
                 +
               </button>
 

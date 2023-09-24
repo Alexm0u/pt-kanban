@@ -85,8 +85,8 @@ function AddEditBoardModal({ setBoardModalOpen, type }) {
     >
       {/* MODAL SECTION */}
       <div className="scrollbar-hide overflow-y-scroll max-h-[95vh] bg-white dark:bg-[#2b2c37] text-black dark:text-white font-bold shadow-md shadow-[#364e7e1a] max-w-md mx-auto w-full px-8 py-8 rounded-xl">
-        <h3 className="text-lg">
-          {type === 'edit' ? 'Edit' : 'Add New'} Board
+        <h3 className="text-lg text-[#0f766e] dark:text-white">
+          {type === 'edit' ? 'Editar' : 'Add New'} Tablero
         </h3>
 
         {/* NOMBRE TAREA */}
@@ -96,7 +96,7 @@ function AddEditBoardModal({ setBoardModalOpen, type }) {
           </label>
 
           <input
-            className="bg-transparent px-4 py-2 rounded-md text-sm border border-grey-600 outline-none focus:outline-[#635fc7] outline-1 ring-0"
+            className="bg-transparent px-4 py-2 rounded-md text-sm border border-grey-600 outline-none focus:outline-[#0f766e] outline-1 ring-0"
             placeholder="e.g Web Design"
             value={name}
             onChange={(e) => {
@@ -114,7 +114,7 @@ function AddEditBoardModal({ setBoardModalOpen, type }) {
           {newColumns.map((column, index) => (
             <div key={column.id} className="flex items-center w-full">
               <input
-                className="bg-transparent flex-grow px-4 py-2 rounded-md text-sm border border-grey-600 outline-none focus:outline-[#735fc7]"
+                className="bg-transparent flex-grow px-4 py-2 rounded-md text-sm border border-grey-600 outline-none focus:outline-[#0f766e]"
                 onChange={(e) => {
                   onChange(column.id, e.target.value);
                 }}
@@ -134,7 +134,7 @@ function AddEditBoardModal({ setBoardModalOpen, type }) {
 
         <div>
           <button
-            className="w-full items-center hover:opacity-75 dark:text-[#635fc7] dark:bg-white text-white bg-[#635fc7] mt-2 py-2 rounded-full"
+            className="w-full items-center hover:opacity-75 dark:text-[#0f766e] dark:bg-white text-white bg-[#1a6b4782] mt-2 py-2 rounded-full"
             onClick={() => {
               setNewColumns((state) => [
                 ...state,
@@ -146,7 +146,7 @@ function AddEditBoardModal({ setBoardModalOpen, type }) {
           </button>
 
           <button
-            className="w-full items-center hover:opacity-75 dark:text-white dark:bg-[#635fc7] mt-8 relative text-white bg-[#635fc7] py-2 rounded-full"
+            className="w-full items-center hover:opacity-75 dark:text-white dark:bg-[#0f766e] mt-8 relative text-white bg-[#0f766e] py-2 rounded-full"
             onClick={() => {
               const isValid = validate();
               if (isValid === true) onSubmit();

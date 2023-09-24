@@ -35,10 +35,10 @@ function Task({taskIndex, colIndex }) {
             setIsTaskModalOpen(true);
           }}
         className="w-[280px] first:my-5 rounded-lg  bg-white  dark:bg-[#2b2c37] shadow-[#364e7e1a] 
-        py-6 px-3 shadow-lg hover:text-[#635fc7] dark:text-white dark:hover:text-[#635fc7] cursor-pointer ">
+        py-6 px-3 shadow-lg hover:text-[#FCA5A5] dark:text-white dark:hover:text-[#635fc7] cursor-pointer ">
             <p className=" font-bold tracking-wide ">{task.title}</p>
-            <p className=" font-bold text-xs tracking-tighter mt-2 text-gray-500">
-          {completed} of {subtasks.length} Tareas completadas
+            <p className=" font-bold text-xs tracking-tighter mt-2 text-[#1a6b4782] dark:text-[#fca5a5]">
+          {completed} de {subtasks.length} Tareas completadas
         </p>
         </div>
         {isTaskModalOpen && (

@@ -49,13 +49,13 @@ function HeaderDropdown({setOpenDropdown, setBoardModalOpen}) {
             <div>
                 {boards.map((board,index) => (
                   <div className={`flex items-baseline dark:text-white space-x-2 px-5 py-4 
-                  ${board.isActive && 'bg-[#635fc7] rounded-r-full text-white mr-8'}`} key={index}
+                  ${board.isActive && 'bg-[#0f766e] rounded-r-full text-white mr-8'}`} key={index}
                   onClick={()=>{
                       dispatch(boardsSlice.actions.setBoardActive({index}))
                   }}>
                   
                     <img src={boardIcon} className='h-4'/>
-                    <p className='text-lg font-bold'>
+                    <p className='text-lg font-bold '>
                       {board.name}
                     </p>
 
@@ -68,7 +68,7 @@ function HeaderDropdown({setOpenDropdown, setBoardModalOpen}) {
                   setOpenDropdown(false)
                 }}>
                     <img src={boardIcon} className='h-4'/>
-                    <p className='text-lg font-bold'>
+                    <p className='text-lg font-bold text-[#fca5a5]'>
                       Crear nuevo
                     </p>
                 </div>
@@ -78,7 +78,7 @@ function HeaderDropdown({setOpenDropdown, setBoardModalOpen}) {
                     <Switch 
                       checked={darkSide} 
                       onChange={toogleDarkMode} 
-                      className={`${darkSide?'bg-[#635fc7]':'bg-grey-200'}
+                      className={`${darkSide?'bg-[#0f766e]':'bg-grey-200'}
                       relative inline-flex h-6 w-11 items-center rounded-full
                       `}>
                       <span className={`${darkSide? 'translate-x-6': 'translate-x-1'}

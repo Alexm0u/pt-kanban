@@ -108,7 +108,7 @@ function AddEditTaskModal({type, device, setOpenAddEditTask, setIsTaskModalOpen 
                 <label className="text-sm dark:text-white text-grey-500">Nombre de la tarea</label>
                 <input value={title} onChange={(e)=> setTitle(e.target.value)}
                 className='bg-transparent px-4 py-2 outline-none focus:border-0 rounded-md text-sm 
-                border border-grey-600 focus:outline-[#635fc7] ring-0'
+                border border-grey-600 focus:outline-[#0f766e] ring-0'
                 type="text"
                 placeholder='Ej. Revisar mail'/>
             </div>
@@ -131,7 +131,7 @@ function AddEditTaskModal({type, device, setOpenAddEditTask, setIsTaskModalOpen 
                         type='text'
                         value={subtask.title}
                         className='bg-transparent outline-none focus:border-0 border flex-grow 
-                        px-4 py-2 rounded-md text-sm border-grey-600 focus:outline-[#635fc7]'
+                        px-4 py-2 rounded-md text-sm border-grey-600 focus:outline-[#0f766e]'
                         placeholder='Ej. Responder mails pendientes'
                         />
                         <img 
@@ -147,7 +147,7 @@ function AddEditTaskModal({type, device, setOpenAddEditTask, setIsTaskModalOpen 
                     ])
                     }}
                     className='w-full items-center
-                    dark:text-[#635fc7] dark:bg-white text-white bg-[#635fc7] py-2 rounded-full'>
+                    dark:text-[#0f766e] dark:bg-white text-white bg-[#1a6b4782] py-2 rounded-full'>
                         Añadir subtarea
                     </button>
             </div>
@@ -162,7 +162,7 @@ function AddEditTaskModal({type, device, setOpenAddEditTask, setIsTaskModalOpen 
                 onChange={(e)=>onChangeStatus(e)}
                 className='select-status flex flex-grow px-4 py-2 rounded-md text-sm 
                 bg-transparent focus:border-0 border border-grey-300 
-                focus:outline-[#635fc7] outline-none'>
+                focus:outline-[#0f766e] outline-none'>
                     {columns.map((column, index)=>(
                         <option value={column.name}
                         key={index}
@@ -178,7 +178,7 @@ function AddEditTaskModal({type, device, setOpenAddEditTask, setIsTaskModalOpen 
                 <label className="text-sm dark:text-white text-grey-500">Notas</label>
                 <textarea value={description} onChange={(e)=> setDescription(e.target.value)}
                 className='bg-transparent px-4 py-2 outline-none focus:border-0 min-h-[200px] rounded-md text-sm 
-                border border-grey-600 focus:outline-[#635fc7] ring-0'
+                border border-grey-600 focus:outline-[#0f766e] ring-0'
                 placeholder='Ej. Comprobar si se ha recibido algún correo nuevo'/>
             </div>
             <button 
@@ -189,7 +189,7 @@ function AddEditTaskModal({type, device, setOpenAddEditTask, setIsTaskModalOpen 
                         setOpenAddEditTask(false)
                     }
                 }}
-                className=" w-full items-center mt-2 text-white bg-[#635fc7] py-2 rounded-full ">
+                className=" w-full items-center mt-2 text-white bg-[#0f766e] py-2 rounded-full ">
                     {type === 'edit'? 'Guardar cambios': 'Crear Tarea'}
                 </button>
             

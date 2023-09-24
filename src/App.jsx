@@ -17,7 +17,7 @@ function App() {
   const [boardModalOpen, setBoardModalOpen] = useState(false)
 
   return (
-    <div className='overflow-hidden overflow-x-scroll'>
+    <div className='overflow-hidden overflow-x-scroll bg-[#0f766e] dark:bg-[#22163af0]'>
       <>
       {
       boards.length > 0 ? 

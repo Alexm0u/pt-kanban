@@ -15,20 +15,20 @@ function DeleteModal({type, title, onDeleteBtnClick, setIsDeleteModalOpen}) {
         <div className="scrollbar-hide overflow-y-scroll max-w-md max-h-[95vh] my-auto
         bg-white dark:bg-[#2b2c37] text-black dark:text-white w-full px-8 py-8 rounded-xl">
             <h3 className="font-bold text-red-500 text-xl">
-                Eliminar {type} ?
+                ¿Eliminar {type}?
             </h3>
             {type === 'task'? (
                 <p className='text-grey-500 font-semibold tracking-wide text-sm pt-6'>
-                    ¿ Estás seguro de que quieres eliminar "{title}" ?
+                    ¿Estás seguro de que quieres eliminar "{title}"?
                 </p>
             )   :<p className='text-grey-500 font-semibold tracking-wide text-sm pt-6'>
-                    ¿ Estás seguro de que quieres eliminar "{title}" ?
+                    ¿Estás seguro de que quieres eliminar "{title}"?
                 </p>}
             <div className="flex w-full mt-4 items-center justify-center space-x-4">
                 <button onClick={onDeleteBtnClick} className="w-full items-center text-white hover:opacity-75 font-semibold bg-red-500 py-2 rounded-full">
                     Eliminar
                 </button>
-                <button onClick={()=> setIsDeleteModalOpen(false)} className="w-full items-center text-[#635fc7] hover:opacity-75 font-semibold bg-[#635fc71a] py-2 rounded-full">
+                <button onClick={()=> setIsDeleteModalOpen(false)} className="w-full items-center text-[#0f766e] hover:opacity-75 font-semibold bg-[#635fc71a] py-2 rounded-full">
                     Cancelar
                 </button>
             </div>
