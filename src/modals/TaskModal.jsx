@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import elipsis from "../assets/icon-vertical-ellipsis.svg"
-import ElipsisMenu from '../components/ElipsisMenu'
+import elipsis from "../assets/icon-vertical-ellipsis.svg";
+import ElipsisMenu from "../components/ElipsisMenu";
 import Subtask from "../components/Subtask";
-
+import boardsSlice from "../redux/boardsSlice";
 
 function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
   const dispatch = useDispatch();
@@ -13,7 +13,6 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
   const col = columns.find((col, i) => i === colIndex);
   const task = col.tasks.find((task, i) => i === taskIndex);
   const subtasks = task.subtasks;
- 
 
   let completed = 0;
   subtasks.forEach((subtask) => {
@@ -24,14 +23,25 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
 
   const [status, setStatus] = useState(task.status);
   const [newColIndex, setNewColIndex] = useState(columns.indexOf(col));
-  const [elipsisMenuOpen, setElipsisMenuOpen] = useState(false)
-  const setOpenEditModal = () => {
+  const [elipsisMenuOpen, setElipsisMenuOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalopen] = useState(false);
+  const setOpenEditModal = () => {};
 
-  }
-
-  const setOpenDeleteModal = () => {
-
-  }
+  const setOpenDeleteModal = () => {};
+  const onClose = (e) => {
+    if (e.target !== e.currentTarget) {
+      return;
+    }
+    dispatch(
+      boardsSlice.actions.setTaskStatus({
+        taskIndex,
+        colIndex,
+        newColIndex,
+        status,
+      })
+    )
+    setIsTaskModalOpen(false)
+  };
   const onChange = (e) => {
     setStatus(e.target.value);
     setNewColIndex(e.target.selectedIndex);
@@ -39,6 +49,7 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
 
   return (
     <div
+      onClick={onClose}
       className="fixed right-0 top-0 px-2 py-4 overflow-scroll scrollbar-hide  
     z-50 left-0 bottom-0 justify-center items-center flex dropdown"
     >
@@ -48,17 +59,19 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
           <h1 className="text-lg">{task.title}</h1>
           <img
             onClick={() => {
-              setElipsisMenuOpen(state => !state);
+              setElipsisMenuOpen((state) => !state);
             }}
             src={elipsis}
             alt="elipsis"
             className=" cursor-pointer h-6"
           />
-          {elipsisMenuOpen && <ElipsisMenu
-            setOpenEditModal={setOpenEditModal}
-            setOpenDeleteModal={setOpenDeleteModal}
-            type = 'tarea'
-          />}
+          {elipsisMenuOpen && (
+            <ElipsisMenu
+              setOpenEditModal={setOpenEditModal}
+              setOpenDeleteModal={setOpenDeleteModal}
+              type="tarea"
+            />
+          )}
         </div>
         <p className="text-grey-500 font-semibold tracking-white text-sm pt-6">
           {task.description}
@@ -80,7 +93,7 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
             );
           })}
         </div>
-         {/* ESTADO ACTUAL SECCION */}
+        {/* ESTADO ACTUAL SECCION */}
         <div className="mt-8 flex flex-col space-y-3">
           <label className="  text-sm dark:text-white text-gray-500">
             Estado actual
@@ -91,17 +104,13 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
             onChange={onChange}
           >
             {columns.map((column, index) => (
-              <option className="status-options">
-                {column.name}
-              </option>
+              <option className="status-options">{column.name}</option>
             ))}
           </select>
         </div>
-       
-        
       </div>
     </div>
-  ); 
+  );
 }
 
 export default TaskModal;
