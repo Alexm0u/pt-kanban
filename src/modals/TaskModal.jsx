@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import elipsis from "../assets/icon-vertical-ellipsis.svg"
 import ElipsisMenu from '../components/ElipsisMenu'
+import Subtask from "../components/Subtask";
 
 
 function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
@@ -54,6 +55,26 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
             setOpenDeleteModal={setOpenDeleteModal}
             type = 'tarea'
           />}
+        </div>
+        <p className="text-grey-500 font-semibold tracking-white text-sm pt-6">
+          {task.description}
+        </p>
+        <p className="pt-6 text-grey-500 tracking-widest text-sm">
+          Subtareas({completed} de {subtasks.length})
+        </p>
+
+        {/* SECCIÓN DE SUBTAREAS  */}
+        <div className="mt-3 space-y-2">
+          {subtasks.map((subtask, i) => {
+            return (
+              <Subtask
+                index={i}
+                taskIndex={taskIndex}
+                colIndex={colIndex}
+                key={i}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
