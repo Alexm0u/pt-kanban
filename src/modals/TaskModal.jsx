@@ -4,6 +4,8 @@ import elipsis from "../assets/icon-vertical-ellipsis.svg";
 import ElipsisMenu from "../components/ElipsisMenu";
 import Subtask from "../components/Subtask";
 import boardsSlice from "../redux/boardsSlice";
+import DeleteModal from "../modals/DeleteModal";
+import { set } from "lodash";
 
 function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
   const dispatch = useDispatch();
@@ -25,9 +27,16 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
   const [newColIndex, setNewColIndex] = useState(columns.indexOf(col));
   const [elipsisMenuOpen, setElipsisMenuOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalopen] = useState(false);
-  const setOpenEditModal = () => {};
+  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
+  const setOpenEditModal = () => {
+    setIsAddTaskModalOpen(true);
+    setElipsisMenuOpen(false);
+  };
 
-  const setOpenDeleteModal = () => {};
+  const setOpenDeleteModal = () => {
+    setElipsisMenuOpen(false);
+    setIsDeleteModalopen(true);
+  };
   const onClose = (e) => {
     if (e.target !== e.currentTarget) {
       return;
@@ -39,12 +48,18 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
         newColIndex,
         status,
       })
-    )
-    setIsTaskModalOpen(false)
+    );
+    setIsTaskModalOpen(false);
   };
   const onChange = (e) => {
     setStatus(e.target.value);
     setNewColIndex(e.target.selectedIndex);
+  };
+
+  const onDeleteBtnClick = () => {
+    dispatch(boardsSlice.actions.deleteTask({ taskIndex, colIndex }));
+    setIsTaskModalOpen(false);
+    setIsDeleteModalopen(false);
   };
 
   return (
@@ -109,6 +124,14 @@ function TaskModal({ colIndex, taskIndex, setIsTaskModalOpen }) {
           </select>
         </div>
       </div>
+      {isDeleteModalOpen && (
+        <DeleteModal
+          setIsDeleteModalOpen={setIsDeleteModalopen}
+          onDeleteBtnClick={onDeleteBtnClick}
+          type="task"
+          title={task.title}
+        />
+      )}
     </div>
   );
 }
