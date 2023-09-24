@@ -1,7 +1,7 @@
 {
   "boards": [
     {
-      "name": "Tablero principal",
+      "name": "Tareas Frontend",
       "isActive" : false,
       "columns": [
         {
@@ -90,23 +90,24 @@
                   "isCompleted": false
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "name": "Finalizada",
+          "tasks": [
             {
-              "title": "Add account management endpoints",
-              "description": "",
-              "status": "Doing",
+              "title": "Research the market",
+              "description": "We need to get a solid overview of the market to ensure we have up-to-date estimates of market size and demand.",
+              "status": "Done",
               "subtasks": [
                 {
-                  "title": "Upgrade plan",
+                  "title": "Write up research analysis",
                   "isCompleted": true
                 },
                 {
-                  "title": "Cancel plan",
+                  "title": "Calculate TAM",
                   "isCompleted": true
-                },
-                {
-                  "title": "Update payment method",
-                  "isCompleted": false
                 }
               ]
             }
