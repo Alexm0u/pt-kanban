@@ -26,11 +26,13 @@ function Task({taskIndex, colIndex }) {
         JSON.stringify({ taskIndex, prevColIndex: colIndex })
       );
     };
+
+
   return (
     <div>
         <div 
-        draggable
         onDragStart={handleOnDrag}
+        draggable
         onClick={() => {
             setIsTaskModalOpen(true);
           }}

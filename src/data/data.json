@@ -8,61 +8,46 @@
           "name": "Por hacer",
           "tasks": [
             {
-              "title": "Build UI for onboarding flow",
+              "title": "Cambiar estilos NavBar",
               "description": "",
               "status": "Todo",
               "subtasks": [
                 {
-                  "title": "Sign up page",
+                  "title": "Insertar Logo de empresa",
                   "isCompleted": true
                 },
                 {
-                  "title": "Sign in page",
+                  "title": "DropDown",
                   "isCompleted": false
                 },
                 {
-                  "title": "Welcome page",
+                  "title": "Colores corporativos",
                   "isCompleted": false
                 }
               ]
             },
             {
-              "title": "Build UI for search",
+              "title": "Aplicar DnD a las tareas",
               "description": "",
               "status": "Todo",
               "subtasks": [
                 {
-                  "title": "Search page",
+                  "title": "Arrastrar y soltar tareas",
                   "isCompleted": false
                 }
               ]
             },
             {
-              "title": "Build settings UI",
+              "title": "Hacer diseño responsive",
               "description": "",
               "status": "Todo",
               "subtasks": [
                 {
-                  "title": "Account page",
+                  "title": "Página principal",
                   "isCompleted": false
                 },
                 {
-                  "title": "Billing page",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "title": "QA and test all major user journeys",
-              "description": "Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.",
-              "status": "Todo",
-              "subtasks": [
-                {
-                  "title": "Internal testing",
-                  "isCompleted": false
-                },
-                {
-                  "title": "External testing",
+                  "title": "Añadir Tareas",
                   "isCompleted": false
                 }
               ]
@@ -73,21 +58,17 @@
           "name": "En proceso",
           "tasks": [
             {
-              "title": "Design settings and search pages",
+              "title": "Migrar código JS a JSX",
               "description": "",
               "status": "Doing",
               "subtasks": [
                 {
-                  "title": "Settings - Account page",
+                  "title": "Home",
                   "isCompleted": true
                 },
                 {
-                  "title": "Settings - Billing page",
+                  "title": "Tableros",
                   "isCompleted": true
-                },
-                {
-                  "title": "Search page",
-                  "isCompleted": false
                 }
               ]
             }
@@ -97,16 +78,16 @@
           "name": "Finalizada",
           "tasks": [
             {
-              "title": "Research the market",
-              "description": "We need to get a solid overview of the market to ensure we have up-to-date estimates of market size and demand.",
+              "title": "Hacer tablero Kanban",
+              "description": "Necesitamos realizar una app estilo Kanban o Trello",
               "status": "Done",
               "subtasks": [
                 {
-                  "title": "Write up research analysis",
+                  "title": "Analizar funcionalidades",
                   "isCompleted": true
                 },
                 {
-                  "title": "Calculate TAM",
+                  "title": "Trazar un plan",
                   "isCompleted": true
                 }
               ]

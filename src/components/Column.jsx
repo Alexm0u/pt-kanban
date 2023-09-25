@@ -2,6 +2,7 @@ import { shuffle } from "lodash";
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Task from "./Task";
+import boardsSlice from "../redux/boardsSlice";
 
 function Column({colIndex}) {
 
@@ -25,7 +26,12 @@ const col = board.columns.find((col, i) => i === colIndex)
 
 useEffect(()=> {
     setColor(shuffle(colors).pop())
-}, [dispatch])
+}, [dispatch])  
+
+
+const handleOnDragOver = (e) => {
+  e.preventDefault()
+}
 
 const handleOnDrop = (e) => {
   const { prevColIndex, taskIndex } = JSON.parse(
@@ -38,11 +44,6 @@ const handleOnDrop = (e) => {
     );
   }
 };
-
-const handleOnDragOver = (e) => {
-  e.preventDefault();
-};
-
 
   return (
     <div 
