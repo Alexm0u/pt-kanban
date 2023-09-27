@@ -9,7 +9,7 @@ Las tareas pueden modificar su estado y cambiar su posisicón automáticamente e
 
 FUTURAS FUNCIONALIDADES:
 
-Inplementar el Drag And Drop correctamente para poder arrastrar las tareas.
+Retocar estilos de TailWind para que sea mas responsive.
 
 
 
